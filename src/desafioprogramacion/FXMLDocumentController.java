@@ -90,6 +90,7 @@ public class FXMLDocumentController implements Initializable {
                             File file = new File("src/imagenes/California.png");
         imagenActual.setImage(new Image(file.toURI().toString()));
                     // do what ever you want
+                    //Subiendo a git
                 }
 
             });
