@@ -1,0 +1,26 @@
+BorderPane {
+    -fx-background-color: black;
+    -fx-border-color: red;
+    
+}
+
+Button {
+/*    -fx-background-color: black;*/
+}
+
+TreeView{
+    -fx-background-color: black;
+    -fx-border-color: red;   
+}
+
+AnchorPane{
+    -fx-border-color: red;       
+}
+
+HBox{
+    -fx-border-color: red;           
+}
+
+VBox{
+    -fx-border-color: red;           
+}
