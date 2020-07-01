@@ -6,28 +6,37 @@
 package desafioprogramacion.controladores;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import javafx.util.Duration;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javax.imageio.ImageIO;
 
 /**
  *
  * @author carlo
  */
 public class FXMLDocumentController implements Initializable{
-        
+    
+    @FXML
+    private BorderPane panelPrincipal;
+    
     @FXML
     private Text pasoSeleccionado;
     
@@ -186,5 +195,22 @@ public class FXMLDocumentController implements Initializable{
                 }
             });        
     }
-    
+
+    @FXML
+    public void captureAndSaveDisplay(ActionEvent event){
+        FileChooser fileChooser = new FileChooser();
+        
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("png files (*.png)", "*.png"));
+        
+        File file = fileChooser.showSaveDialog(null);
+
+        if(file != null){
+            try {
+                WritableImage writableImage = new WritableImage((int)panelPrincipal.getWidth()+ 20,
+                        (int)panelPrincipal.getHeight() + 20);
+                WritableImage snapshot = panelPrincipal.snapshot(new SnapshotParameters(), writableImage);
+                ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png",file);
+            } catch (IOException ex) { ex.printStackTrace(); }
+        }
+    }
 }

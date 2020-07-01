@@ -9,7 +9,7 @@ Button {
 }
 
 TreeView{
-    -fx-background-color: black;
+    -fx-background-color: green;
     -fx-border-color: red;   
 }
 
