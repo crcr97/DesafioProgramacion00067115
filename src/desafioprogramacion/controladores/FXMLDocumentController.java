@@ -70,27 +70,25 @@ public class FXMLDocumentController implements Initializable{
                                            componentesDeMatrices,paso7);
         
         TreeItem pasoPreliminarParte1 = new TreeItem("Definicion de Dominio");
-        TreeItem pasoPreliminarParte2 = new TreeItem("Definicion de Condiciones de Contorno");
+        TreeItem pasoPreliminarParte2 = new TreeItem("Definicion de Malla");
         TreeItem pasoPreliminarParte3 = new TreeItem("Definicion de Condiciones de Contorno");
-        TreeItem pasoPreliminarParte4 = new TreeItem("Definicion de Malla");
-        TreeItem pasoPreliminarParte5 = new TreeItem("Definicion de Malla-Numeracion de Nodos");
-        TreeItem pasoPreliminarParte6 = new TreeItem("Definicion de Malla-Numeracion elemento 1");
-        TreeItem pasoPreliminarParte7 = new TreeItem("Definicion de Malla-Numeracion elemento 2");
-        TreeItem pasoPreliminarParte8 = new TreeItem("Definicion de Malla-Numeracion elemento 3");
-        TreeItem pasoPreliminarParte9 = new TreeItem("Definicion de Malla-Numeracion elemento 4");
-        TreeItem pasoPreliminarParte10 = new TreeItem("Definicion de Malla-Numeracion elemento 5");
-        TreeItem pasoPreliminarParte11 = new TreeItem("Definicion de Malla-Numeracion elemento 6");
-        TreeItem pasoPreliminarParte12 = new TreeItem("Tabla de Conectividades");
+        TreeItem pasoPreliminarParte4 = new TreeItem("Numeracion de Nodos");
+        TreeItem pasoPreliminarParte5 = new TreeItem("Numeracion elemento 1");
+        TreeItem pasoPreliminarParte6 = new TreeItem("Numeracion elemento 2");
+        TreeItem pasoPreliminarParte7 = new TreeItem("Numeracion elemento 3");
+        TreeItem pasoPreliminarParte8 = new TreeItem("Numeracion elemento 4");
+        TreeItem pasoPreliminarParte9 = new TreeItem("Numeracion elemento 5");
+        TreeItem pasoPreliminarParte10 = new TreeItem("Numeracion elemento 6");
+        TreeItem pasoPreliminarParte11 = new TreeItem("Tabla de Conectividades");
         pasoPreliminar.getChildren().addAll(pasoPreliminarParte1,pasoPreliminarParte2,pasoPreliminarParte3,
                                             pasoPreliminarParte4,pasoPreliminarParte5,pasoPreliminarParte6,
                                             pasoPreliminarParte7,pasoPreliminarParte8,pasoPreliminarParte9,
-                                            pasoPreliminarParte10,pasoPreliminarParte11,pasoPreliminarParte12);
+                                            pasoPreliminarParte10,pasoPreliminarParte11);
         
         TreeItem paso1Parte1 = new TreeItem("Localizacion-Ecuaciones a Usar");
         TreeItem paso1Parte2 = new TreeItem("Localizacion-Isoparametrizacion");
         TreeItem paso1Parte3 = new TreeItem("Localizacion-Funciones de Forma");
-        TreeItem paso1Parte4 = new TreeItem("Localizacion-Parte Faltante");
-        paso1.getChildren().addAll(paso1Parte1,paso1Parte2,paso1Parte3,paso1Parte4);
+        paso1.getChildren().addAll(paso1Parte1,paso1Parte2,paso1Parte3);
 
         TreeItem paso2Parte1 = new TreeItem("Interpolacion");
         paso2.getChildren().addAll(paso2Parte1);
