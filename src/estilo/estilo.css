@@ -1,11 +1,11 @@
-BorderPane {
+/*BorderPane {
     -fx-background-color: black;
     -fx-border-color: red;
     
 }
 
 Button {
-/*    -fx-background-color: black;*/
+    -fx-background-color: black;
 }
 
 TreeView{
@@ -24,3 +24,5 @@ HBox{
 VBox{
     -fx-border-color: red;           
 }
+*/
+

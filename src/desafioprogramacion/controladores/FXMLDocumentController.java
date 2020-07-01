@@ -8,6 +8,7 @@ package desafioprogramacion.controladores;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import javafx.util.Duration;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
@@ -18,12 +19,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
@@ -33,6 +38,9 @@ import javax.imageio.ImageIO;
  * @author carlo
  */
 public class FXMLDocumentController implements Initializable{
+    
+    @FXML
+    private VBox contenedorImagen;
     
     @FXML
     private BorderPane panelPrincipal;
@@ -47,9 +55,10 @@ public class FXMLDocumentController implements Initializable{
     private ImageView imagenActual;
     
     @Override
-    public void initialize(URL url, ResourceBundle rb){ 
+    public void initialize(URL url, ResourceBundle rb){        
         creandoTreeView();
         detectarClickEnTreeView();
+        cambiarTamanoImagen();
     }
     
     void creandoTreeView(){
@@ -96,7 +105,7 @@ public class FXMLDocumentController implements Initializable{
         TreeItem paso3Parte1 = new TreeItem("Residuales");        
         paso3.getChildren().addAll(paso3Parte1);
 
-        TreeItem paso4Parte1 = new TreeItem("Residuos Ponderados");
+        TreeItem paso4Parte1 = new TreeItem("Residuos Ponderados-Planteando Integrales");
         TreeItem paso4Parte2 = new TreeItem("Residuos Ponderados-Uniendo integrales");        
         paso4.getChildren().addAll(paso4Parte1,paso4Parte2);
         
@@ -193,6 +202,13 @@ public class FXMLDocumentController implements Initializable{
                 }
             });        
     }
+    
+    void cambiarTamanoImagen(){
+        contenedorImagen.heightProperty().addListener((observable, oldValue, newValue) -> {
+                imagenActual.fitHeightProperty().bind(contenedorImagen.heightProperty());
+                imagenActual.fitWidthProperty().bind(contenedorImagen.widthProperty()); 
+            });
+    }
 
     @FXML
     public void captureAndSaveDisplay(ActionEvent event){
@@ -202,13 +218,25 @@ public class FXMLDocumentController implements Initializable{
         
         File file = fileChooser.showSaveDialog(null);
 
+
         if(file != null){
             try {
-                WritableImage writableImage = new WritableImage((int)panelPrincipal.getWidth()+ 20,
-                        (int)panelPrincipal.getHeight() + 20);
+                WritableImage writableImage = new WritableImage((int)panelPrincipal.getWidth(),
+                        (int)panelPrincipal.getHeight());
                 WritableImage snapshot = panelPrincipal.snapshot(new SnapshotParameters(), writableImage);
                 ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png",file);
+                alert();
             } catch (IOException ex) { ex.printStackTrace(); }
         }
     }
+    
+    public void alert(){
+        Alert alert = new Alert(AlertType.NONE,"", ButtonType.FINISH);
+        alert.setTitle("Aviso!");
+        alert.setContentText("Captura Guardada Con Exito!");
+        alert.getDialogPane().setPrefSize(200,50);
+        Optional<ButtonType> result = alert.showAndWait();
+
+    }
+    
 }

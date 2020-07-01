@@ -47,14 +47,14 @@
          </effect>
       </Text>
    </top>
+   <left>
+      <TreeView fx:id="menuDePasos" prefHeight="505.0" prefWidth="332.0" BorderPane.alignment="CENTER" />
+   </left>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="contenedorImagen" alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="imagenActual" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </VBox>
    </center>
-   <left>
-      <TreeView fx:id="menuDePasos" prefHeight="505.0" prefWidth="332.0" BorderPane.alignment="CENTER" />
-   </left>
 </BorderPane>
