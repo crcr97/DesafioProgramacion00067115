@@ -15,9 +15,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desafioprogramacion.controladores.FXMLDocumentController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="desafioprogramacion.controladores.FXMLDocumentController">
    <left>
-      <TreeView fx:id="menuDePasos" BorderPane.alignment="CENTER" />
+      <TreeView fx:id="menuDePasos" prefHeight="502.0" prefWidth="342.0" BorderPane.alignment="CENTER" />
    </left>
    <bottom>
       <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" BorderPane.alignment="CENTER">
@@ -64,7 +64,7 @@
       </Text>
    </top>
    <center>
-      <ImageView fx:id="imagenActual" fitHeight="493.0" fitWidth="740.0" pickOnBounds="true" smooth="false" BorderPane.alignment="CENTER">
+      <ImageView fx:id="imagenActual" fitHeight="493.0" fitWidth="910.0" pickOnBounds="true" smooth="false" BorderPane.alignment="CENTER">
          <image>
             <Image url="@../imagenes/GLASHFISH%20CONFIG.PNG" />
          </image>
