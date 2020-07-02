@@ -16,6 +16,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.SnapshotParameters;
@@ -40,7 +41,7 @@ import javax.imageio.ImageIO;
 public class FXMLDocumentController implements Initializable{
     
     @FXML
-    private VBox contenedorImagen;
+    private BorderPane contenedorImagen;
     
     @FXML
     private BorderPane panelPrincipal;
@@ -203,11 +204,27 @@ public class FXMLDocumentController implements Initializable{
             });        
     }
     
-    void cambiarTamanoImagen(){
-        contenedorImagen.heightProperty().addListener((observable, oldValue, newValue) -> {
-                imagenActual.fitHeightProperty().bind(contenedorImagen.heightProperty());
-                imagenActual.fitWidthProperty().bind(contenedorImagen.widthProperty()); 
+    void cambiarTamanoImagen(){      
+        
+        contenedorImagen.heightProperty().addListener(new ChangeListener<Number>(){
+            @Override 
+            public void changed(ObservableValue<?extends Number> observableValue,Number oldSceneHeight,Number newSceneHeight){
+                imagenActual.fitHeightProperty().setValue(newSceneHeight);
+                System.out.println("ALTURA VIEJA:"+oldSceneHeight);                                
+                System.out.println("ALTURA NUEVA:"+newSceneHeight);
+
+            }            
             });
+            
+        contenedorImagen.widthProperty().addListener(new ChangeListener<Number>(){
+            @Override 
+            public void changed(ObservableValue<?extends Number> observableValue,Number oldSceneWidth,Number newSceneWidth){        
+                imagenActual.fitWidthProperty().setValue(newSceneWidth);
+                System.out.println("ANCHURA VIEJA:"+oldSceneWidth);                
+                System.out.println("ANCHURA NUEVA:"+newSceneWidth);
+
+            }            
+            });        
     }
 
     @FXML
