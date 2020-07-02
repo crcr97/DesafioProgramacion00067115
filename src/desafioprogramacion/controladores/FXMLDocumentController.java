@@ -16,9 +16,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -29,7 +29,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
@@ -59,12 +58,12 @@ public class FXMLDocumentController implements Initializable{
     public void initialize(URL url, ResourceBundle rb){        
         creandoTreeView();
         detectarClickEnTreeView();
-        cambiarTamanoImagen();
+        tamañoImagen();
     }
     
     void creandoTreeView(){
         TreeItem todosLosPasos = new TreeItem("Pasos M.E.F. 3D");
-        
+        todosLosPasos.setExpanded(true);
         menuDePasos.setRoot(todosLosPasos);
         
         TreeItem pasoPreliminar= new TreeItem("Pasos preliminares");
@@ -188,44 +187,33 @@ public class FXMLDocumentController implements Initializable{
                     
                         TreeItem<String> selectedItem = new_val;                        
                         pasoSeleccionado.setText(selectedItem.getValue());
+                        transicion(pasoSeleccionado);
+
 
                         File file = new File("src/imagenes/"+selectedItem.getValue()+".PNG");
-                        imagenActual.setImage(new Image(file.toURI().toString()));
-                    
-                        FadeTransition ft = new FadeTransition();
-                        ft.setNode(imagenActual);
-                        ft.setDuration(new Duration(2000.0));
-                        ft.setFromValue(0.0);
-                        ft.setToValue(1.0);
-                        ft.setCycleCount(1);
-                        ft.setAutoReverse(true);
-                        ft.play();  
+                        imagenActual.setImage(new Image(file.toURI().toString())); 
+                        transicion(imagenActual);
+
                 }
             });        
     }
     
-    void cambiarTamanoImagen(){      
-        
-        contenedorImagen.heightProperty().addListener(new ChangeListener<Number>(){
-            @Override 
-            public void changed(ObservableValue<?extends Number> observableValue,Number oldSceneHeight,Number newSceneHeight){
-                imagenActual.fitHeightProperty().setValue(newSceneHeight);
-                System.out.println("ALTURA VIEJA:"+oldSceneHeight);                                
-                System.out.println("ALTURA NUEVA:"+newSceneHeight);
-
-            }            
-            });
-            
-        contenedorImagen.widthProperty().addListener(new ChangeListener<Number>(){
-            @Override 
-            public void changed(ObservableValue<?extends Number> observableValue,Number oldSceneWidth,Number newSceneWidth){        
-                imagenActual.fitWidthProperty().setValue(newSceneWidth);
-                System.out.println("ANCHURA VIEJA:"+oldSceneWidth);                
-                System.out.println("ANCHURA NUEVA:"+newSceneWidth);
-
-            }            
-            });        
+    void tamañoImagen(){
+                imagenActual.fitHeightProperty().setValue(512);
+                imagenActual.fitWidthProperty().setValue(952); 
     }
+    
+    void transicion(Node elementeoAnimado){
+        FadeTransition ft = new FadeTransition();
+        ft.setNode(elementeoAnimado);
+        ft.setDuration(new Duration(1000.0));
+        ft.setFromValue(0.0);
+        ft.setToValue(1.0);
+        ft.setCycleCount(1);
+        ft.setAutoReverse(true);
+        ft.play();          
+    }
+    
 
     @FXML
     public void captureAndSaveDisplay(ActionEvent event){

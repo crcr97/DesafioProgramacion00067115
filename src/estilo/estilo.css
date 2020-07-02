@@ -1,28 +1,23 @@
-/*BorderPane {
+BorderPane {
     -fx-background-color: black;
-    -fx-border-color: red;
-    
+    -fx-border-color: #1776eb;    
+}
+
+#panelPrincipal{
+    -fx-background-image: url("/imagenes/Fondo2.jpg");    
 }
 
 Button {
     -fx-background-color: black;
 }
 
+ImageView{
+    -fx-border-color: #1776eb;
+}
+
 TreeView{
-    -fx-background-color: green;
-    -fx-border-color: red;   
+    -fx-border-color: #1776eb;
 }
 
-AnchorPane{
-    -fx-border-color: red;       
-}
 
-HBox{
-    -fx-border-color: red;           
-}
-
-VBox{
-    -fx-border-color: red;           
-}
-*/
 
