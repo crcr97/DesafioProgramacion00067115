@@ -4,7 +4,7 @@ BorderPane {
 }
 
 #panelPrincipal{
-    -fx-background-image: url("/imagenes/Fondo2.jpg");    
+    -fx-background-image: url("/imagenes/Fondo.jpg");    
 }
 
 Button {
