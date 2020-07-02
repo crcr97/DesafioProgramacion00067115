@@ -189,9 +189,9 @@ public class FXMLDocumentController implements Initializable{
                         pasoSeleccionado.setText(selectedItem.getValue());
                         transicion(pasoSeleccionado);
 
+                        URL url = getClass().getResource("/imagenes/"+selectedItem.getValue()+".PNG");
 
-                        File file = new File("src/imagenes/"+selectedItem.getValue()+".PNG");
-                        imagenActual.setImage(new Image(file.toURI().toString())); 
+                        imagenActual.setImage(new Image(url.toString())); 
                         transicion(imagenActual);
 
                 }
