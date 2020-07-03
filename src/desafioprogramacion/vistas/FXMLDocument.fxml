@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -21,13 +22,24 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
          <children>
-            <Button fx:id="button" mnemonicParsing="false" onAction="#captureAndSaveDisplay" style="-fx-background-color: #1776eb; -fx-border-color: black;" text="Tomar Captura de Pantalla" textFill="WHITE">
+            <Button fx:id="botonSalir" mnemonicParsing="false" prefHeight="34.0" style="-fx-background-color: #1776eb; -fx-border-color: black;" text="Salir" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <Icon content="CLOSE" />
+               </graphic>
+            </Button>
+            <Button fx:id="button" mnemonicParsing="false" onAction="#captureAndSaveDisplay" prefHeight="34.0" style="-fx-background-color: #1776eb; -fx-border-color: black;" text="Tomar Captura de Pantalla" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
+               <graphic>
+                  <Icon content="PHOTO_CAMERA" />
+               </graphic>
             </Button>
          </children>
       </HBox>

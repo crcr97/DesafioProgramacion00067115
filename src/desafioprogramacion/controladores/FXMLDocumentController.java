@@ -74,9 +74,10 @@ public class FXMLDocumentController implements Initializable{
         TreeItem paso5 = new TreeItem("Paso 5-Metodo de Galerkin");
         TreeItem paso6 = new TreeItem("Paso 6-Integracion por partes");
         TreeItem componentesDeMatrices = new TreeItem("Definiendo Componentes de Matrices");        
-        TreeItem paso7 = new TreeItem("Paso 7-Ensamblaje");        
+        TreeItem paso7 = new TreeItem("Paso 7-Ensamblaje");
+        TreeItem paso8 = new TreeItem("Paso 8-Condiciones de contorno");               
         todosLosPasos.getChildren().addAll(pasoPreliminar,paso1,paso2,paso3,paso4,paso5,paso6,
-                                           componentesDeMatrices,paso7);
+                                           componentesDeMatrices,paso7,paso8);
         
         TreeItem pasoPreliminarParte1 = new TreeItem("Definicion de Dominio");
         TreeItem pasoPreliminarParte2 = new TreeItem("Definicion de Malla");
@@ -169,11 +170,46 @@ public class FXMLDocumentController implements Initializable{
         TreeItem MatrizMRespuestaIntegral = new TreeItem("Componentes de M-Respuesta Integral"); 
         componentesMatrizM.getChildren().addAll(MatrizMIntegral,MatrizMIntegralModificada,
                                                 MatrizMDistribuyendoIntegral,MatrizMResolviendoIntegral,
-                                                MatrizMRespuestaIntegral);          
+                                                MatrizMRespuestaIntegral);               
         
         componentesDeMatrices.getChildren().addAll(componentesConsideraciones,componentesMatrizK,
                                                    componentesMatrizC,componentesMatrizD,componentesMatrizQ,
                                                    componentesMatrizF,componentesMatrizM);
+
+
+        TreeItem ensamblajeTablaDeConectividades = new TreeItem("Recordando Tabla de Conectividades");
+        
+        TreeItem ensamblajeElementosLocales = new TreeItem("Elementos Locales");
+        TreeItem ensamblejeElemento1 = new TreeItem("Elemento local 1");
+        TreeItem ensamblejeElemento2 = new TreeItem("Elemento local 2");
+        TreeItem ensamblejeElemento3 = new TreeItem("Elemento local 3");
+        TreeItem ensamblejeElemento4 = new TreeItem("Elemento local 4");        
+        TreeItem ensamblejeElemento5 = new TreeItem("Elemento local 5");        
+        TreeItem ensamblejeElemento6 = new TreeItem("Elemento local 6");              
+        ensamblajeElementosLocales.getChildren().addAll(ensamblejeElemento1,ensamblejeElemento2,ensamblejeElemento3,
+                                                        ensamblejeElemento4,ensamblejeElemento5,ensamblejeElemento6);                                                             
+               
+        TreeItem ensamblajeElementosGlobales = new TreeItem("Elementos Globales");
+        TreeItem ensamblajeTabla1Globales = new TreeItem("Tabla de Elementos Globales");
+        TreeItem ensamblajeTabla2Globales = new TreeItem("Multiplicando Tabla de elementos");         
+        ensamblajeElementosGlobales.getChildren().addAll(ensamblajeTabla1Globales,ensamblajeTabla2Globales);
+                
+        paso7.getChildren().addAll(ensamblajeTablaDeConectividades,ensamblajeElementosLocales,ensamblajeElementosGlobales);
+        
+        TreeItem condicionesDeContorno0 = new TreeItem("Aplicando Condiciones de Contorno");
+        TreeItem condicionesDeContorno1 = new TreeItem("Aplicando en elementos globales");
+        TreeItem condicionesDeContorno2 = new TreeItem("Aplicando a demas matrices");        
+        condicionesDeContorno0.getChildren().addAll(condicionesDeContorno1,condicionesDeContorno1);
+
+        
+        TreeItem condicionesDeContornoEcuaciones = new TreeItem("Planteando Sistemas de ecuaciones");       
+        TreeItem condicionesDeContornoEcuaciones1 = new TreeItem("Matriz Principal sistema de ecuaciones");       
+        TreeItem condicionesDeContornoEcuaciones2 = new TreeItem("Resto de matrices del sistema");       
+        condicionesDeContornoEcuaciones.getChildren().addAll(condicionesDeContornoEcuaciones1,condicionesDeContornoEcuaciones2);
+
+        
+        paso8.getChildren().addAll(condicionesDeContorno0,condicionesDeContornoEcuaciones);
+        
     }
     
     void detectarClickEnTreeView(){
