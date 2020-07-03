@@ -22,6 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -31,6 +32,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
 /**
@@ -40,10 +42,10 @@ import javax.imageio.ImageIO;
 public class FXMLDocumentController implements Initializable{
     
     @FXML
-    private BorderPane contenedorImagen;
+    private BorderPane panelPrincipal;
     
     @FXML
-    private BorderPane panelPrincipal;
+    private Button botonSalir;
     
     @FXML
     private Text pasoSeleccionado;
@@ -199,7 +201,7 @@ public class FXMLDocumentController implements Initializable{
         TreeItem condicionesDeContorno0 = new TreeItem("Aplicando Condiciones de Contorno");
         TreeItem condicionesDeContorno1 = new TreeItem("Aplicando en elementos globales");
         TreeItem condicionesDeContorno2 = new TreeItem("Aplicando a demas matrices");        
-        condicionesDeContorno0.getChildren().addAll(condicionesDeContorno1,condicionesDeContorno1);
+        condicionesDeContorno0.getChildren().addAll(condicionesDeContorno1,condicionesDeContorno2);
 
         
         TreeItem condicionesDeContornoEcuaciones = new TreeItem("Planteando Sistemas de ecuaciones");       
@@ -249,7 +251,6 @@ public class FXMLDocumentController implements Initializable{
         ft.setAutoReverse(true);
         ft.play();          
     }
-    
 
     @FXML
     public void captureAndSaveDisplay(ActionEvent event){
@@ -279,5 +280,29 @@ public class FXMLDocumentController implements Initializable{
         Optional<ButtonType> result = alert.showAndWait();
 
     }
+    
+    @FXML
+    private void clickBotonSalir(ActionEvent event) throws InterruptedException{
+        URL url = getClass().getResource("/imagenes/DESPEDIDA.PNG");
+        imagenActual.setImage(new Image(url.toString()));
+        transicion(imagenActual);
+        alertaSalir();
+    }    
+    
+    public void alertaSalir(){
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Aviso!");
+        alert.setContentText("Desea salir?");
+        alert.getDialogPane().setPrefSize(200,50);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Stage stage = (Stage) botonSalir.getScene().getWindow();
+            stage.close(); 
+        } else {
+            URL url = getClass().getResource("/imagenes/CONTINUAR.png");
+            imagenActual.setImage(new Image(url.toString()));
+            transicion(imagenActual);               
+        }
+    } 
     
 }
